@@ -1,0 +1,25 @@
+{
+	"name": "trigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline1",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/archivecontainer/blobs/",
+			"blobPathEndsWith": "Sales.csv",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/d0956f8c-fa6b-46dc-82d1-85423f78484b/resourceGroups/adfcopydataRG/providers/Microsoft.Storage/storageAccounts/processsalesdatasa",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

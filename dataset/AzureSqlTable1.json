@@ -2,82 +2,69 @@
 	"name": "AzureSqlTable1",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "az_source_sqldatabase_linkedService",
+			"referenceName": "AzureSqlDatabase1",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "CustomerID",
+				"name": "ProductID",
 				"type": "int",
 				"precision": 10
 			},
 			{
-				"name": "NameStyle",
-				"type": "bit"
-			},
-			{
-				"name": "Title",
-				"type": "nvarchar"
-			},
-			{
-				"name": "FirstName",
-				"type": "nvarchar"
-			},
-			{
-				"name": "MiddleName",
-				"type": "nvarchar"
-			},
-			{
-				"name": "LastName",
-				"type": "nvarchar"
-			},
-			{
-				"name": "Suffix",
-				"type": "nvarchar"
-			},
-			{
-				"name": "CompanyName",
-				"type": "nvarchar"
-			},
-			{
-				"name": "SalesPerson",
-				"type": "nvarchar"
-			},
-			{
-				"name": "EmailAddress",
-				"type": "nvarchar"
-			},
-			{
-				"name": "Phone",
-				"type": "nvarchar"
-			},
-			{
-				"name": "PasswordHash",
+				"name": "Name",
 				"type": "varchar"
 			},
 			{
-				"name": "PasswordSalt",
+				"name": "ProductNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Color",
+				"type": "nvarchar"
+			},
+			{
+				"name": "StandardCost",
 				"type": "varchar"
 			},
 			{
-				"name": "rowguid",
-				"type": "uniqueidentifier"
+				"name": "ListPrice",
+				"type": "varchar"
+			},
+			{
+				"name": "Size",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Weight",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductCategoryID",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductModelID",
+				"type": "varchar"
+			},
+			{
+				"name": "SellStartDate",
+				"type": "varchar"
+			},
+			{
+				"name": "SellEndDate",
+				"type": "varchar"
 			},
 			{
 				"name": "ModifiedDate",
-				"type": "datetime",
-				"precision": 23,
-				"scale": 3
+				"type": "varchar"
 			}
 		],
 		"typeProperties": {
-			"schema": "SalesLT",
-			"table": {
-				"value": "dbo.dummyName",
-				"type": "Expression"
-			}
+			"schema": "dbo",
+			"table": "SalesProduct"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
