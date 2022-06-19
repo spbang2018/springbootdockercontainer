@@ -7,7 +7,7 @@ env:
   CLUSTER_RESOURCE_GROUP: "Devopsession"
   NAMESPACE: "default"
   SECRET: ""
-  APP_NAME: ""
+  APP_NAME: "springbootdockercontainer"
   
 jobs:
   build:
@@ -24,6 +24,7 @@ jobs:
     
     # Container build and push to a Azure Container Registry (ACR)
     - run: |
+        az acr login --name devopsdockercontainerregistry
         docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
         docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
       working-directory: ./<path-to-Dockerfile-directory>
@@ -43,8 +44,8 @@ jobs:
     - uses: azure/k8s-create-secret@v1
       with:
         container-registry-url: ${{ env.REGISTRY_NAME }}.azurecr.io
-        container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
-        container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+        container-registry-username: ${{ secrets.ACR_USERNAME }}
+        container-registry-password: ${{ secrets.ACR_PASSWORD }}
         secret-name: ${{ env.SECRET }}
         namespace: ${{ env.NAMESPACE }}
         arguments: --force true
