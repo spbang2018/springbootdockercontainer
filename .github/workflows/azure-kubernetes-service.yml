@@ -6,7 +6,7 @@ env:
   CLUSTER_NAME: "mydevopscluster"
   CLUSTER_RESOURCE_GROUP: "Devopsession"
   NAMESPACE: "default"
-  SECRET: ""
+  SECRET: "mysecret"
   APP_NAME: "springbootdockercontainer"
   
 jobs:
