@@ -37,7 +37,7 @@ jobs:
         password: ${ secrets.ACR_PASSWORD }
     - run: |
         az acr login --name devopsdockercontainerregistry
-        docker build . -t devopsdockercontainerregistry.azurecr.io/springbootdockercontainer:v5
-        docker push devopsdockercontainerregistry.azurecr.io/springbootdockercontainer:v5
+        docker build . -t devopsdockercontainerregistry.azurecr.io/springbootdockercontainer:${{ github.sha }}
+        docker push devopsdockercontainerregistry.azurecr.io/springbootdockercontainer:${{ github.sha }}
         
   
