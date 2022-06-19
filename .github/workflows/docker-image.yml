@@ -24,7 +24,7 @@ jobs:
         password: ${ secrets.ACR_PASSWORD }
 
     - name: Build the Docker image
-      run: docker build . -t ${ secrets.REGISTRY_NAME }.azurecr.io/${ secrets.APP_NAME }:${ github.sha }
+      run: docker build . -t devopsdockercontainerregistry.azurecr.io/springbootdockercontainer:${ github.sha }
 
     - name: Push Image to Docker
-      run: docker push ${ secrets.REGISTRY_NAME }.azurecr.io/${ secrets.APP_NAME }:${ github.sha }
+      run: docker push devopsdockercontainerregistry.azurecr.io/springbootdockercontainer:${ github.sha }
