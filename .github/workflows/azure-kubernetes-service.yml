@@ -61,10 +61,11 @@ jobs:
         arguments: --force true
     
     # Deploy app to AKS
-    - uses: azure/k8s-deploy@v1
+    - uses: azure/k8s-deploy@3.1
       with:
         manifests: |
           deployment.yaml
+          dir/manifests
         images: |
           ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
         imagepullsecrets: |
