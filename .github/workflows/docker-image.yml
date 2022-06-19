@@ -36,7 +36,7 @@ jobs:
         username: ${ secrets.ACR_USERNAME }
         password: ${ secrets.ACR_PASSWORD }
     - run: |
-        docker login devopsdockercontainerregistry.azurecr.io
+        az acr login --name devopsdockercontainerregistry
         docker build . -t devopsdockercontainerregistry.azurecr.io/springbootdockercontainer:v5
         docker push devopsdockercontainerregistry.azurecr.io/springbootdockercontainer:v5
         
