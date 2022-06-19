@@ -11,6 +11,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      Tag : V-${{ github.run_id }}-${{ github.run_attempt }}
+    
 
     steps:
     - name: Check out code 
@@ -24,7 +27,7 @@ jobs:
         password: ${ secrets.ACR_PASSWORD }
 
     - name: Build the Docker image
-      run: docker build . -t devopsdockercontainerregistry.azurecr.io/springbootdockercontainer:${ github.sha }
+      run: docker build . -t devopsdockercontainerregistry.azurecr.io/springbootdockercontainer:${ env.Tag }
 
     - name: Push Image to Docker
-      run: docker push devopsdockercontainerregistry.azurecr.io/springbootdockercontainer:${ github.sha }
+      run: docker push devopsdockercontainerregistry.azurecr.io/springbootdockercontainer:${ env.Tag }
