@@ -27,7 +27,7 @@ jobs:
         password: ${ secrets.ACR_PASSWORD }
 
     - name: Build the Docker image
-      run: docker build . -t devopsdockercontainerregistry.azurecr.io/springbootdockercontainer:${ env.Tag }
+      run: docker build . -t devopsdockercontainerregistry.azurecr.io/springbootdockercontainer:v5
 
     - name: Push Image to Docker
-      run: docker push devopsdockercontainerregistry.azurecr.io/springbootdockercontainer:${ env.Tag }
+      run: docker push devopsdockercontainerregistry.azurecr.io/springbootdockercontainer:v5
