@@ -1,0 +1,30 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code 
+      uses: actions/checkout@main
+
+    - name: Login to Azure Container Registry
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${ secrets.REGISTRY_NAME }.azurecr.io
+        username: ${ secrets.ACR_USERNAME }
+        password: ${ secrets.ACR_PASSWORD }
+
+    - name: Build the Docker image
+      run: docker build . -t ${ secrets.REGISTRY_NAME }.azurecr.io/${ secrets.APP_NAME }:${ github.sha }
+
+    - name: Push Image to Docker
+      run: docker push ${ secrets.REGISTRY_NAME }.azurecr.io/${ secrets.APP_NAME }:${ github.sha }
