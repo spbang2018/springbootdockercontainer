@@ -1,4 +1,4 @@
-name: Build Docker image and push to ACR registry
+name: Build Docker image and push to ACR registry 
 
 on:
   push:
